@@ -148,7 +148,7 @@ function setBrand(h){brand.innerHTML = h
 
 function home(){
   setBrand(true);
-  let h='<h2 class="greet">오늘도 한 장, 그려볼까요?</h2><p class="lead">배우고 싶은 그림을 골라 주세요 · 5가지 · 각 12차시</p>'
+  let h='<h2 class="greet">오늘도 한 장, 그려볼까요?</h2><p class="lead">배우고 싶은 그림을 골라 주세요 · 3가지 · 명화 24차시 · 기초드로잉·한국문화유산 각 12차시</p>'
    +'<button class="tbtn'+(previewAll?' on':'')+'" style="margin-bottom:14px" onclick="togglePreview()">'+(previewAll?'🔓 12차시 전체 열림 (미리보기)':'🔒 순차 잠금 (실제 운영)')+'</button>';
   DATA.areas.forEach((a,i)=>{const d=a.lessons.filter(l=>progress[l.id]).length;
     h+='<button class="area" onclick="program('+i+')"><span class="chip" style="background:'+a.color+'">'+a.initial+'</span>'
