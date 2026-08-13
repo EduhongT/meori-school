@@ -28,6 +28,12 @@
   .area .t b{font-size:19px;font-weight:800;display:block;}.area .t span{font-size:13px;color:var(--muted);}
   .area .cnt{margin-left:auto;text-align:right;font-size:12px;color:var(--muted);}.area .cnt b{display:block;font-size:18px;color:var(--ink);}
   .chev{margin-left:8px;color:var(--muted);font-size:20px;}
+  /* 내 인생 영상 만들기 — 첫 화면 연결 카드 */
+  .area.life-video{background:linear-gradient(135deg,#FFF9F3 0%,#FFF3EA 100%);
+    border-color:#EFD5C8;box-shadow:0 6px 18px rgba(200,69,59,.08);}
+  .area.life-video .chip{background:linear-gradient(135deg,#C8453B,#D89A3E);font-size:23px;}
+  .area.life-video .t span{color:#8A6D60;}
+  .area.life-video .cnt b{color:var(--cinnabar);font-size:15px;}
   .progress{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:14px;}
   .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px;}
   .bar i{display:block;height:100%;background:var(--celadon);border-radius:99px;}
@@ -148,11 +154,17 @@ function setBrand(h){brand.innerHTML = h
 
 function home(){
   setBrand(true);
-  let h='<h2 class="greet">오늘도 한 장, 그려볼까요?</h2><p class="lead">배우고 싶은 그림을 골라 주세요 · 3가지 · 명화 24차시 · 기초드로잉·한국문화유산 각 12차시</p>'
+  let h='<h2 class="greet">오늘도 한 장, 그려볼까요?</h2><p class="lead">배우고 싶은 것을 골라 주세요 · 4가지</p>'
    +'<button class="tbtn'+(previewAll?' on':'')+'" style="margin-bottom:14px" onclick="togglePreview()">'+(previewAll?'🔓 12차시 전체 열림 (미리보기)':'🔒 순차 잠금 (실제 운영)')+'</button>';
   DATA.areas.forEach((a,i)=>{const d=a.lessons.filter(l=>progress[l.id]).length;
     h+='<button class="area" onclick="program('+i+')"><span class="chip" style="background:'+a.color+'">'+a.initial+'</span>'
      +'<span class="t"><b>'+a.name+'</b><span>'+a.sub+'</span></span><span class="cnt"><b>'+d+'/'+a.lessons.length+'</b>차시</span><span class="chev">›</span></button>';});
+
+  h+='<button class="area life-video" onclick="location.href=\'./life-video/\'">'
+    +'<span class="chip">🎬</span>'
+    +'<span class="t"><b>내 인생 영상 만들기</b><span>사진과 목소리로 만드는 나의 이야기</span></span>'
+    +'<span class="cnt"><b>바로 시작</b></span><span class="chev">›</span></button>';
+
   main.innerHTML=h; scrollTo(0,0);
 }
 function program(ai){
